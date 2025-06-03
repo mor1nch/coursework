@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+<section class="pricing py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Информация о контактах</h5>
+            <table class="table table-striped">
+              <tr>
+                <td class="w-25">Страна</td>
+                <td>Россия</td>
+              </tr>
+              <tr>
+                <td class="w-25">ИНН</td>
+                <td>1234567890</td>
+              </tr>
+              <tr>
+                <td class="w-25">Адрес</td>
+                <td>Москва, ул. Примерная, д. 123, кв. 456</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Свяжитесь с нами</h5>
+            <form method="post" action="" class="form-floating">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="name">Имя</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required>
+              </div>
+              <div class="mb-3">
+                <label for="phone">Телефон</label>
+                <input type="text" name="phone" class="form-control" id="phone"
+                       placeholder="Контактный телефон" required>
+              </div>
+              <div class="mb-3">
+                <label for="message">Сообщение</label>
+                <textarea type="text" name="message" class="form-control" id="message"
+                          placeholder="Расскажите о ситуации" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-secondary ml-2">Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

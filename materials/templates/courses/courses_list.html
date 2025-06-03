@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load mediapath_tag %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">StudyNet</h1>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-4 d-flex align-items-center justify-content-center mb-4">
+        <a href="{% url 'materials:course_create' %}" class="btn btn-outline-dark">
+            Создать новый курс</a>
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for course in courses %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="{% mediapath course.image %}" class="card-img-top" alt="{{ course.title }}" style="height: 225px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.title }}</h5>
+                        <p class="card-text">{{ course.description|truncatechars:100 }}</p>
+                        <p class="text-muted">Дата создания: {{ course.create_date }}</p>
+                        <a href="{% url 'materials:course_detail' course.pk %}" class="btn btn-dark">
+                            Смотреть подробнее</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
